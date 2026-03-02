@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> - Smart Mess</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://unpkg.com/html5-qrcode"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div class="brand">Smart Mess Management System</div>
+      </header>
+
+      <main class="grid two">
+        <section class="card">
+          <h1>Login</h1>
+          <p class="muted">
+            Students/Admins login using the ID card barcode. Use camera scanning or
+            type the demo codes.
+          </p>
+
+          <div class="form-row">
+            <label for="barcodeInput">Barcode / Card ID</label>
+            <input
+              id="barcodeInput"
+              type="text"
+              placeholder="Try: ADMIN123, STU1001, STU1002"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="loginBtn">Login</button>
+            <button class="btn" id="toggleCameraBtn" type="button">
+              Start Camera Scan
+            </button>
+          </div>
+
+          <p id="loginMessage" class="message"></p>
+
+          <div class="hint">
+            <strong>Demo:</strong> Visit <code>/admin/seed</code> once, then login
+            with <code>ADMIN123</code> or <code>STU1001</code>.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Camera Scanner</h2>
+          <p class="muted">
+            Allow camera permission. Scan your ID barcode/QR. If your card is 1D
+            barcode and camera scan struggles, you can still type the code.
+          </p>
+          <div id="reader" class="scanner"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/login.js"></script>
+  </body>
+</html>
+

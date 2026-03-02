@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Mess Management System - Demo Login</title>
+    <link rel="stylesheet" href="./demo.css" />
+    <!-- Camera barcode/QR scanner -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div class="brand">Smart Mess Management System</div>
+        <div class="tag">Standalone Demo Output (no server)</div>
+      </header>
+
+      <!-- SCREEN 1: LOGIN + SCANNER -->
+      <main id="screenLogin" class="grid two">
+        <section class="card">
+          <h1>Login</h1>
+          <p class="muted">
+            Scan your ID card barcode/QR to login. This is a demo output screen.
+          </p>
+
+          <div class="form-row">
+            <label for="barcodeInput">Barcode / Card ID</label>
+            <input
+              id="barcodeInput"
+              type="text"
+              placeholder="Scan or type (example: STU1001)"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="btnContinue">Continue</button>
+            <button class="btn" id="btnToggleScan" type="button">Start Camera Scan</button>
+          </div>
+
+          <p id="msgLogin" class="message"></p>
+
+          <div class="hint">
+            Tip: If your card is a <strong>1D barcode</strong> and camera scan struggles,
+            just type the code (many barcode scanners act like a keyboard).
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Camera Scanner</h2>
+          <p class="muted">Allow camera permission and scan your card.</p>
+          <div id="reader" class="scanner"></div>
+        </section>
+      </main>
+
+      <!-- SCREEN 2: DETAILS FORM -->
+      <main id="screenDetails" class="grid" hidden>
+        <section class="card">
+          <h1>Student Details</h1>
+          <p class="muted">
+            After barcode scan, collect basic details (this simulates the “fill details”
+            step after login).
+          </p>
+
+          <div class="inline">
+            <span class="pill">Card ID:</span>
+            <code id="cardIdLabel">-</code>
+          </div>
+
+          <div class="grid three">
+            <div class="form-row">
+              <label for="role">Role</label>
+              <select id="role">
+                <option value="student" selected>Student</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="studentId">Student ID</label>
+              <input id="studentId" type="text" placeholder="e.g. 23CS101" />
+            </div>
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" />
+            </div>
+          </div>
+
+          <div class="grid three">
+            <div class="form-row">
+              <label for="department">Department</label>
+              <input id="department" type="text" placeholder="e.g. CSE" />
+            </div>
+            <div class="form-row">
+              <label for="year">Year</label>
+              <select id="year">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="hostel">Hostel / Block</label>
+              <input id="hostel" type="text" placeholder="e.g. Block A" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="btnSave">Save Details</button>
+            <button class="btn" id="btnBack" type="button">Back</button>
+          </div>
+
+          <p id="msgDetails" class="message"></p>
+        </section>
+      </main>
+
+      <!-- SCREEN 3: CONFIRMATION -->
+      <main id="screenDone" class="grid" hidden>
+        <section class="card">
+          <h1>Login Success</h1>
+          <p class="muted">
+            Details saved locally (demo). In the real full-stack app, this would redirect
+            to the dashboard and store details in MongoDB.
+          </p>
+
+          <pre id="savedJson" class="pre"></pre>
+
+          <div class="actions">
+            <button class="btn primary" id="btnRestart">Scan Another Card</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./demo.js"></script>
+  </body>
+</html>
+

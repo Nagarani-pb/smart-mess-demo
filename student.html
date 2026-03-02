@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Mess - Student</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div class="brand">Smart Mess Management System</div>
+        <nav class="nav">
+          <span class="tag" id="who">-</span>
+          <a href="./student.html">Student</a>
+          <button class="link" id="btnLogout">Logout</button>
+        </nav>
+      </header>
+
+      <main class="grid">
+        <section class="card">
+          <div class="split">
+            <div>
+              <h1>Student Dashboard</h1>
+              <p class="muted">
+                Demand-driven booking: the mess should cook only based on tomorrow’s bookings.
+              </p>
+            </div>
+            <div class="right">
+              <span class="pill">Menu date:</span>
+              <code id="menuDate">-</code>
+            </div>
+          </div>
+
+          <table id="menuTable">
+            <thead>
+              <tr>
+                <th>Meal</th>
+                <th>Dishes</th>
+                <th>Your booking</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <p id="msg" class="message"></p>
+          <div class="hint">
+            <strong>Rule:</strong> cancel before the deadline (demo uses previous day 10:00 PM).
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Feedback (Rate meals)</h2>
+          <p class="muted">Give 1–5 star rating after you eat. Admin sees analytics.</p>
+          <div class="grid three">
+            <div class="form-row">
+              <label for="feedbackMeal">Meal</label>
+              <select id="feedbackMeal"></select>
+            </div>
+            <div class="form-row">
+              <label for="rating">Rating</label>
+              <select id="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="comment">Comment (optional)</label>
+              <input id="comment" type="text" placeholder="e.g. Tasty and hot!" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="btnSubmitFeedback">Submit Feedback</button>
+          </div>
+          <p id="msgFb" class="message"></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="./student.js"></script>
+  </body>
+</html>
+

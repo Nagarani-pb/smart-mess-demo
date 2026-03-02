@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Mess - Admin</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/html5-qrcode"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div class="brand">Smart Mess Management System</div>
+        <nav class="nav">
+          <span class="tag" id="who">-</span>
+          <a href="./admin.html">Admin</a>
+          <button class="link" id="btnLogout">Logout</button>
+        </nav>
+      </header>
+
+      <main class="grid">
+        <section class="card">
+          <div class="split">
+            <div>
+              <h1>Admin Dashboard</h1>
+              <p class="muted">
+                Demand aggregation + inventory planning. In a demand-driven model, cooking starts
+                from booking data (not “push” estimates).
+              </p>
+            </div>
+            <div class="right">
+              <span class="pill">Target date:</span>
+              <code id="targetDate">-</code>
+            </div>
+          </div>
+
+          <div class="kpi" id="kpis"></div>
+        </section>
+
+        <section class="card">
+          <h2>Demand Aggregation (dish-wise)</h2>
+          <div id="agg"></div>
+        </section>
+
+        <section class="card">
+          <h2>Inventory Calculation (portion × bookings)</h2>
+          <div id="inv"></div>
+          <div class="hint">
+            <strong>Example logic:</strong> requiredRiceKg \(=\) ricePerServingKg × bookedStudents.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Attendance Scan (meal time)</h2>
+          <p class="muted">
+            Scan student card again. If they booked but don’t attend, mark as no-show (reason optional).
+          </p>
+
+          <div class="grid three">
+            <div class="form-row">
+              <label for="mealSelect">Meal</label>
+              <select id="mealSelect"></select>
+            </div>
+            <div class="form-row">
+              <label for="scanCardInput">Card ID (manual)</label>
+              <input id="scanCardInput" type="text" placeholder="Scan or type STU1001" />
+            </div>
+            <div class="form-row">
+              <label for="noShowReason">No-show reason (optional)</label>
+              <input id="noShowReason" type="text" placeholder="e.g. Sick / Out of campus" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="btnMarkAttend">Mark Attended</button>
+            <button class="btn danger" id="btnMarkNoShow">Mark No-show</button>
+            <button class="btn" id="btnToggleScan" type="button">Start Camera Scan</button>
+          </div>
+
+          <p id="msg" class="message"></p>
+          <div id="reader" class="scanner"></div>
+        </section>
+
+        <section class="card">
+          <h2>Analytics</h2>
+          <div class="grid two">
+            <div>
+              <h3>Popular dishes</h3>
+              <div id="popular"></div>
+            </div>
+            <div>
+              <h3>Ratings</h3>
+              <div id="ratings"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="./admin.js"></script>
+  </body>
+</html>
+
